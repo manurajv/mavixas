@@ -16,6 +16,13 @@ export const siteConfig = {
   url: "https://mavixas.com",
   email: "hello@mavixas.com",
   location: "Kirindiwela, Sri Lanka",
+  /**
+   * File in `public/`, e.g. "/logo.svg". `null` = letter mark + name in the UI.
+   * If the file is **icon only**, set `logoIconOnly: true` so the company `name` shows beside it.
+   * If the file is a **full horizontal** logo, keep `logoIconOnly: false` and only the image shows.
+   */
+  logoPath: null as string | null,
+  logoIconOnly: false,
   sameAs: [
     { label: "LinkedIn", href: "https://linkedin.com/mavixas" },
     { label: "X", href: "https://x.com" },
