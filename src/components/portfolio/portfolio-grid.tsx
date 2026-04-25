@@ -1,0 +1,86 @@
+"use client"
+
+import { motion } from "framer-motion"
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
+
+import { Badge } from "@/components/ui/badge"
+import { buttonVariants } from "@/components/ui/button"
+import { projects, type Project } from "@/lib/data"
+import { cn } from "@/lib/utils"
+
+const ease: [number, number, number, number] = [0.22, 1, 0.36, 1]
+
+const accent: Record<Project["accent"], string> = {
+  blue: "from-sky-500/25 to-blue-600/5",
+  violet: "from-violet-500/25 to-fuchsia-600/5",
+  cyan: "from-cyan-500/20 to-sky-600/5",
+  indigo: "from-indigo-500/25 to-violet-600/5",
+}
+
+export function PortfolioGrid() {
+  return (
+    <div>
+      <div className="grid gap-5 md:grid-cols-2">
+        {projects.map((p, i) => (
+          <motion.article
+            key={p.title}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.12 }}
+            transition={{ delay: (i % 3) * 0.05, duration: 0.45, ease }}
+            className="group flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-zinc-950/50"
+          >
+            <div
+              className={cn(
+                "h-40 bg-gradient-to-br",
+                accent[p.accent],
+                "relative"
+              )}
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_20%_20%,rgba(255,255,255,0.08),transparent)]" />
+              <p className="text-muted-foreground group-hover:text-foreground/90 absolute right-3 bottom-3 text-xs font-medium">
+                {p.category}
+              </p>
+            </div>
+            <div className="flex flex-1 flex-col p-5">
+              <h2 className="text-foreground font-heading text-lg font-semibold">
+                {p.title}
+              </h2>
+              <p className="text-muted-foreground mt-2 flex-1 text-sm leading-relaxed">
+                {p.description}
+              </p>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {p.tags.map((t) => (
+                  <Badge
+                    key={t}
+                    variant="secondary"
+                    className="text-muted-foreground border border-white/5 bg-white/5 font-normal"
+                  >
+                    {t}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+      <p className="text-muted-foreground mt-8 text-center text-sm">
+        NDA work is omitted—reach out for a tailored look at relevant case
+        studies.
+      </p>
+      <div className="mt-6 text-center">
+        <Link
+          href="/contact?intent=project"
+          className={cn(
+            buttonVariants({ size: "lg" }),
+            "inline-flex rounded-full"
+          )}
+        >
+          Discuss your product
+          <ArrowUpRight className="size-3.5" />
+        </Link>
+      </div>
+    </div>
+  )
+}
