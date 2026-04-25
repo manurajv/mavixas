@@ -36,6 +36,7 @@ export function MavixasLogo({
             alt={name}
             width={logoIconOnly ? 32 : 180}
             height={32}
+            unoptimized={logoPath.endsWith(".svg")}
             className={cn(
               "h-8 w-auto object-contain object-left",
               logoIconOnly && "size-8"

@@ -18,11 +18,10 @@ export const siteConfig = {
   location: "Kirindiwela, Sri Lanka",
   /**
    * File in `public/`, e.g. "/logo.svg". `null` = letter mark + name in the UI.
-   * If the file is **icon only**, set `logoIconOnly: true` so the company `name` shows beside it.
-   * If the file is a **full horizontal** logo, keep `logoIconOnly: false` and only the image shows.
+   * **Icon + word** → set `logoIconOnly: true`. **Full horizontal** logo in one file → `false`.
    */
-  logoPath: null as string | null,
-  logoIconOnly: false,
+  logoPath: "/logo.svg" as const,
+  logoIconOnly: true,
   sameAs: [
     { label: "LinkedIn", href: "https://linkedin.com/mavixas" },
     { label: "X", href: "https://x.com" },
