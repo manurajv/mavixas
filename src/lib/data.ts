@@ -36,7 +36,7 @@ export const founder = {
    * Optional: drop a professional photo in `public/`, e.g. `/founder.jpg`.
    * Leave as `null` to use the polished initials avatar.
    */
-  imagePath: null as string | null,
+  imagePath: "/founder.jpg" as string | null,
   bio: "Manuraj leads Mavixas with a product-first engineering mindset, helping businesses turn software ideas into reliable mobile apps, web platforms, SaaS products, and AI-enabled workflows.",
   education: [
     "MSc Informatics — University of Delhi, India",
