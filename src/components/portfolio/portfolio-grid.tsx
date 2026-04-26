@@ -65,9 +65,10 @@ export function PortfolioGrid() {
           </motion.article>
         ))}
       </div>
-      <p className="text-muted-foreground mt-8 text-center text-sm">
-        NDA work is omitted—reach out for a tailored look at relevant case
-        studies.
+      <p className="text-muted-foreground mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed">
+        Public client case studies will be added as work becomes shareable. For
+        now, these examples show the types of systems we can scope, design, and
+        build.
       </p>
       <div className="mt-6 text-center">
         <Link

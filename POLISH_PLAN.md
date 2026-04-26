@@ -18,9 +18,9 @@
   - Button and link micro-interactions
   - Card hover/focus polish
   - Footer surface and CTA refinement
-- [ ] Phase 4: Content and trust
-  - Real portfolio content
-  - Social proof, metrics, and client/logo strip
+- [x] Phase 4: Content and trust
+  - Representative portfolio content without fake client claims
+  - Honest proof-point strip and trust signals
   - Founder/company story refinement
 - [ ] Phase 5: Performance and SEO
   - Open Graph image

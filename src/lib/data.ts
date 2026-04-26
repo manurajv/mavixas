@@ -12,7 +12,7 @@ export const siteConfig = {
   name: "Mavixas",
   tagline: "Build Beyond Limits",
   description:
-    "Mavixas is a Sri Lanka–based software studio building mobile apps, web platforms, SaaS, and AI solutions for teams worldwide.",
+    "Mavixas is a Sri Lanka-based software studio building mobile apps, web platforms, SaaS, and AI solutions for ambitious businesses worldwide.",
   url: "https://mavixas.com",
   email: "hello@mavixas.com",
   location: "Kirindiwela, Sri Lanka",
@@ -130,6 +130,29 @@ export const processSteps = [
   },
 ] as const
 
+export const proofPoints = [
+  {
+    value: "Sri Lanka",
+    label: "APAC base",
+    description: "Cost-effective delivery with global communication standards.",
+  },
+  {
+    value: "Flutter",
+    label: "Mobile strength",
+    description: "Cross-platform apps with polished, native-feeling UX.",
+  },
+  {
+    value: "AI-ready",
+    label: "Modern stack",
+    description: "Practical automation and LLM features built into real workflows.",
+  },
+  {
+    value: "Founder-first",
+    label: "Engagement style",
+    description: "Clear scope, weekly demos, and direct product thinking.",
+  },
+] as const
+
 export type Project = {
   title: string
   category: string
@@ -140,34 +163,34 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "LumenPay",
-    category: "Fintech SaaS",
+    title: "Payment Operations Platform",
+    category: "SaaS architecture",
     description:
-      "Subscription billing, merchant dashboard, and compliance-ready reporting for cross-border trade.",
+      "A subscription-ready product blueprint covering merchant onboarding, billing flows, admin dashboards, and reporting.",
     tags: ["SaaS", "Payments", "Web"],
     accent: "blue",
   },
   {
-    title: "Northwind Field",
-    category: "Mobile + AI",
+    title: "Field Team Mobile App",
+    category: "Flutter product",
     description:
-      "Offline-capable field operations app with voice capture and on-device model routing for teams.",
+      "An offline-capable Flutter app concept for field operations, task capture, location-aware workflows, and manager review.",
     tags: ["Flutter", "AI", "Edge"],
     accent: "violet",
   },
   {
-    title: "Atlas Analytics",
+    title: "Growth Analytics Workspace",
     category: "Data platform",
     description:
-      "Real-time event ingestion, semantic layer, and executive dashboards for growth teams.",
+      "A modern analytics workspace pattern with event ingestion, metric definitions, team dashboards, and executive views.",
     tags: ["Data", "Web", "APIs"],
     accent: "cyan",
   },
   {
-    title: "Veridian Care",
-    category: "Healthcare",
+    title: "Secure Client Portal",
+    category: "Custom software",
     description:
-      "Secure patient portal and clinician workflows with audit trails and role-based access.",
+      "A secure portal pattern for role-based access, document exchange, audit trails, and guided client workflows.",
     tags: ["Compliance", "Web", "Security"],
     accent: "indigo",
   },
@@ -175,23 +198,17 @@ export const projects: Project[] = [
 
 export const featuredHomeProjects = projects.slice(0, 3)
 
-export const testimonials = [
+export const trustSignals = [
   {
-    quote:
-      "Mavixas shipped a production platform in weeks where others quoted quarters. The craft is obvious.",
-    name: "Alex Rivera",
-    role: "CTO, Series B startup",
+    title: "No black-box outsourcing",
+    body: "You work with a direct technical partner: clear scope, transparent progress, and decisions explained in plain English.",
   },
   {
-    quote:
-      "Clear communication, sharp architecture, and a team that actually cares about the business impact.",
-    name: "Priya Menon",
-    role: "Head of Product, B2B SaaS",
+    title: "Built for handoff",
+    body: "Every build is structured for ownership: readable code, documented decisions, and practical deployment notes.",
   },
   {
-    quote:
-      "Our Flutter app launched flawless on iOS and Android. Performance and design both exceeded the bar.",
-    name: "James Okonkwo",
-    role: "Founder, consumer mobile",
+    title: "Launch-minded from day one",
+    body: "We think beyond screens: performance, SEO, form delivery, deployment, analytics, and long-term maintainability.",
   },
 ] as const

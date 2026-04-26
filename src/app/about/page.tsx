@@ -35,7 +35,7 @@ function getValues() {
     },
     {
       title: "Global by design",
-      body: `We've delivered across time zones from ${siteConfig.location} with async collaboration that keeps momentum high.`,
+      body: `Built from ${siteConfig.location} for global collaboration: async updates, clear demos, and timezone-aware planning.`,
       icon: Globe2,
     },
   ] as const
@@ -47,7 +47,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About Mavixas"
         title="A Sri Lankan team building for the world"
-        description="We started Mavixas to give ambitious companies access to a focused product studio: senior talent, clear communication, and the engineering discipline to ship and scale—without the enterprise bloat."
+        description="Mavixas exists to give ambitious businesses a focused product partner: modern engineering, clear communication, and the discipline to move from idea to launch without unnecessary complexity."
       />
       <div className="container mx-auto max-w-4xl space-y-14 px-4 py-20 sm:px-6 sm:py-24">
         <section className="rounded-3xl border border-border/50 bg-zinc-950/35 p-6 sm:p-8">
@@ -55,12 +55,11 @@ export default function AboutPage() {
             Our focus
           </h2>
           <p className="text-muted-foreground mt-4 max-w-3xl text-base leading-relaxed sm:text-lg">
-            {siteConfig.name} partners with growth-stage companies and
-            well-funded teams who need a reliable long-term engineering partner.
-            We specialize in our core strengths:
-            high-quality Flutter apps, performant web platforms, SaaS that needs
-            to feel enterprise-grade, and practical AI you can run in
-            production—not slide decks.
+            {siteConfig.name} is focused on a clear lane: high-quality Flutter
+            apps, performant web platforms, SaaS products that can grow with
+            the business, and practical AI features that solve real workflow
+            problems. We keep the team lean, the communication direct, and the
+            work grounded in launch-ready outcomes.
           </p>
         </section>
         <ul className="grid gap-4 sm:grid-cols-2">

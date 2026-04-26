@@ -25,8 +25,8 @@ export function HomeFeaturedProjects() {
       <div className="container mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Work"
-          title="Featured projects"
-          description="A snapshot of the platforms we have shipped with founders and product teams."
+          title="Representative builds"
+          description="Examples of the product systems Mavixas is built to design and deliver—from MVPs to scalable platforms."
         />
         <div className="grid gap-5 lg:grid-cols-3">
           {featuredHomeProjects.map((p, i) => (
@@ -40,7 +40,7 @@ export function HomeFeaturedProjects() {
             >
               <div
                 className={cn(
-                "h-36 bg-gradient-to-br",
+                  "h-36 bg-gradient-to-br",
                   accent[p.accent],
                   "relative"
                 )}
@@ -80,7 +80,7 @@ export function HomeFeaturedProjects() {
               "text-brand hover:text-brand/80 inline-flex"
             )}
           >
-            View portfolio
+            View build examples
             <ArrowUpRight className="size-3.5" />
           </Link>
         </div>
