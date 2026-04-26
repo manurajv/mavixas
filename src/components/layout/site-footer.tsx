@@ -10,15 +10,23 @@ const legalYear = new Date().getFullYear()
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/60 bg-zinc-950/40">
-      <div className="container mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="relative overflow-hidden border-t border-border/60 bg-zinc-950/50">
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-48 opacity-50"
+        aria-hidden
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 70% at 50% 0%, oklch(0.42 0.16 255 / 14%), transparent 65%)",
+        }}
+      />
+      <div className="container relative mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.25fr_0.7fr_0.7fr_1fr]">
           <div className="space-y-4">
             <MavixasLogo />
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground max-w-sm text-sm leading-relaxed">
               {siteConfig.description}
             </p>
-            <p className="text-muted-foreground flex items-center gap-2 text-xs">
+            <p className="text-muted-foreground flex w-fit items-center gap-2 rounded-full border border-white/6 bg-white/[0.03] px-3 py-1.5 text-xs">
               <MapPin className="text-brand size-3.5 shrink-0" aria-hidden />
               {siteConfig.location} · Global delivery
             </p>
@@ -32,7 +40,7 @@ export function SiteFooter() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="text-muted-foreground hover:text-foreground inline-flex items-center transition"
+                    className="text-muted-foreground hover:text-foreground inline-flex items-center transition hover:translate-x-0.5"
                   >
                     {l.label}
                   </Link>
@@ -45,17 +53,23 @@ export function SiteFooter() {
               Services
             </h3>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              <li>Flutter & mobile</li>
-              <li>Web & SaaS</li>
-              <li>AI & automation</li>
-              <li>Custom platforms</li>
+              {["Flutter & mobile", "Web & SaaS", "AI & automation", "Custom platforms"].map(
+                (service) => (
+                  <li key={service} className="flex items-center gap-2">
+                    <span className="text-brand" aria-hidden>
+                      ·
+                    </span>
+                    {service}
+                  </li>
+                )
+              )}
             </ul>
           </div>
-          <div className="space-y-4">
+          <div className="rounded-3xl border border-white/8 bg-white/[0.03] p-5">
             <h3 className="text-foreground font-heading text-sm font-semibold tracking-wide">
               Start a conversation
             </h3>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               Share your roadmap—we&apos;ll respond with a clear next step, scope,
               and timeline.
             </p>
@@ -63,15 +77,15 @@ export function SiteFooter() {
               href="/contact"
               className={cn(
                 buttonVariants(),
-                "inline-flex h-9 w-fit rounded-full gap-1.5 px-4"
+                "mt-5 inline-flex h-9 w-fit rounded-full gap-1.5 px-4"
               )}
             >
               Get in touch
-              <ArrowUpRight className="size-3.5" />
+              <ArrowUpRight className="size-3.5 transition-transform group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5" />
             </Link>
             <a
               href={`mailto:${siteConfig.email}`}
-              className="text-brand hover:underline text-sm font-medium"
+              className="text-brand mt-4 block text-sm font-medium hover:underline"
             >
               {siteConfig.email}
             </a>

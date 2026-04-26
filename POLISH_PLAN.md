@@ -13,10 +13,11 @@
   - More consistent section/page headings
   - Better card/grid breathing room
   - More premium hero stats treatment
-- [ ] Phase 3: Components
+- [x] Phase 3: Components
   - Navbar active/hover refinement
   - Button and link micro-interactions
   - Card hover/focus polish
+  - Footer surface and CTA refinement
 - [ ] Phase 4: Content and trust
   - Real portfolio content
   - Social proof, metrics, and client/logo strip
