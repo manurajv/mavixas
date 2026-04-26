@@ -136,6 +136,14 @@
     @apply font-sans;
     scroll-behavior: smooth;
   }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
   ::selection {
     background: oklch(0.45 0.2 255 / 35%);
   }

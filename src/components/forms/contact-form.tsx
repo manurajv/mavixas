@@ -239,30 +239,34 @@ export function ContactForm({ className }: { className?: string }) {
           className="min-h-32 border-border/50 bg-zinc-950/40 resize-y"
         />
       </div>
-      <AnimatePresence mode="wait">
-        {error && state === "error" && (
-          <motion.p
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            className="text-destructive text-sm"
-            role="alert"
-          >
-            {error}
-          </motion.p>
-        )}
-        {state === "success" && (
-          <motion.p
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-sm text-emerald-400/90"
-            role="status"
-          >
-            Thanks—your message is on its way. We’ll reply within one business
-            day.
-          </motion.p>
-        )}
-      </AnimatePresence>
+      <div aria-live="polite" aria-atomic="true" className="min-h-[1.5rem]">
+        <AnimatePresence mode="wait">
+          {error && state === "error" && (
+            <motion.p
+              key="err"
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="text-destructive text-sm"
+              role="alert"
+            >
+              {error}
+            </motion.p>
+          )}
+          {state === "success" && (
+            <motion.p
+              key="ok"
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-sm text-emerald-400/90"
+              role="status"
+            >
+              Thanks—your message is on its way. We’ll reply within one business
+              day.
+            </motion.p>
+          )}
+        </AnimatePresence>
+      </div>
       <Button
         type="submit"
         className="h-10 w-full rounded-full sm:w-auto"

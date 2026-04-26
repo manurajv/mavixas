@@ -69,6 +69,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteConfig.url,
   },
+  icons: {
+    icon: "/logo.svg",
+    apple: "/logo.svg",
+  },
 }
 
 export const viewport: Viewport = {
@@ -86,7 +90,7 @@ const orgJsonLd = {
   description: siteConfig.description,
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Colombo",
+    addressLocality: siteConfig.location.split(",")[0]?.trim() ?? "Sri Lanka",
     addressCountry: "LK",
   },
   sameAs: siteConfig.sameAs.map((s) => s.href),
