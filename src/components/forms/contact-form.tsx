@@ -51,7 +51,17 @@ export function ContactForm({ className }: { className?: string }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, company, message, intent }),
       })
-      const data = (await res.json()) as { error?: string; ok?: boolean }
+      const text = await res.text()
+      let data: { error?: string; ok?: boolean } = {}
+      try {
+        data = text ? (JSON.parse(text) as { error?: string; ok?: boolean }) : {}
+      } catch {
+        setError(
+          `The server response was not valid (${res.status}). If this persists, check Vercel function logs.`
+        )
+        setState("error")
+        return
+      }
       if (!res.ok) {
         setError(data.error || "Something went wrong")
         setState("error")
@@ -62,8 +72,13 @@ export function ContactForm({ className }: { className?: string }) {
       setEmail("")
       setCompany("")
       setMessage("")
-    } catch {
-      setError("Network error. Please try again.")
+    } catch (err) {
+      const isOffline = typeof navigator !== "undefined" && !navigator.onLine
+      setError(
+        isOffline
+          ? "You appear to be offline. Check your connection and try again."
+          : "Request failed (network or blocked). Try again, or disable ad blockers for this site."
+      )
       setState("error")
     }
   }
