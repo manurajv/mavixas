@@ -23,8 +23,24 @@ export const siteConfig = {
   logoPath: "/logo.svg" as const,
   logoIconOnly: true,
   sameAs: [
-    { label: "LinkedIn", href: "https://linkedin.com/mavixas" },
-    { label: "X", href: "https://x.com" },
+    { label: "LinkedIn", href: "https://linkedin.com/company/mavixas" },
+    //{ label: "X", href: "https://x.com" },
+  ],
+} as const
+
+export const founder = {
+  name: "Manuraj Vimukthi Alahakoon",
+  role: "Founder & CEO",
+  location: siteConfig.location,
+  /**
+   * Optional: drop a professional photo in `public/`, e.g. `/founder.jpg`.
+   * Leave as `null` to use the polished initials avatar.
+   */
+  imagePath: null as string | null,
+  bio: "Manuraj leads Mavixas with a product-first engineering mindset, helping businesses turn software ideas into reliable mobile apps, web platforms, SaaS products, and AI-enabled workflows.",
+  education: [
+    "MSc Informatics — University of Delhi, India",
+    "B.Tech Computer Engineering — Marwadi University, Rajkot, Gujarat, India",
   ],
 } as const
 

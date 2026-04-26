@@ -48,3 +48,10 @@
 - [ ] Add the domain to Google Search Console.
 - [ ] Submit sitemap in Search Console.
 - [ ] Run Lighthouse on Home, Contact, and Services after production deploy.
+
+## Post-Polish Additions
+
+- [x] Founder-led delivery section on About page
+  - Added founder name, role, location, bio, and education.
+  - Supports optional founder image via `founder.imagePath` in `src/lib/data.ts`.
+- [ ] Replace initials avatar with a professional founder photo when available.
