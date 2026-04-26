@@ -29,11 +29,11 @@ export function PortfolioGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.12 }}
             transition={{ delay: (i % 3) * 0.05, duration: 0.45, ease }}
-            className="group flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-zinc-950/50"
+            className="group flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-zinc-950/50 transition hover:-translate-y-1 hover:border-border"
           >
             <div
               className={cn(
-                "h-40 bg-gradient-to-br",
+                "h-44 bg-gradient-to-br",
                 accent[p.accent],
                 "relative"
               )}
@@ -43,7 +43,7 @@ export function PortfolioGrid() {
                 {p.category}
               </p>
             </div>
-            <div className="flex flex-1 flex-col p-5">
+            <div className="flex flex-1 flex-col p-6">
               <h2 className="text-foreground font-heading text-lg font-semibold">
                 {p.title}
               </h2>

@@ -21,7 +21,7 @@ export default function ServicesPage() {
         title="Product-grade engineering, wherever you are"
         description="Mavixas helps ambitious teams design, build, and ship—Flutter apps, modern web, SaaS, and AI. One studio, one accountable partner."
       />
-      <div className="container mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+      <div className="container mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
         <ServiceCards />
       </div>
     </>

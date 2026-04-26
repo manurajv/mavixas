@@ -9,14 +9,14 @@ const ease: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 export function HomeProcess() {
   return (
-    <section className="border-t border-border/50 py-20 sm:py-24" id="process">
+    <section className="border-t border-border/50 py-24 sm:py-28" id="process">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="How we work"
           title="A clear process, predictable delivery"
           description="Every engagement starts with shared understanding—so builds stay focused and launches stay calm."
         />
-        <ol className="relative mt-2 max-w-2xl">
+        <ol className="relative mt-2 max-w-3xl rounded-3xl border border-border/50 bg-zinc-950/35 p-5 sm:p-7">
           {processSteps.map((p, i) => (
             <motion.li
               key={p.step}
@@ -33,7 +33,7 @@ export function HomeProcess() {
                 />
               )}
               <span
-                className="bg-background text-brand border-brand/35 relative z-10 flex h-7 min-w-7 items-center justify-center rounded-full border text-xs font-bold"
+                className="bg-background text-brand border-brand/35 relative z-10 flex h-8 min-w-8 items-center justify-center rounded-full border text-xs font-bold"
                 aria-hidden
               >
                 {p.step}

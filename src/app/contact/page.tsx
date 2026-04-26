@@ -31,10 +31,10 @@ export default function ContactPage() {
         title="Let’s build the next version"
         description="Share your goals, timeline, and constraints. We’ll reply with a focused plan—or a short call to align before we write a proposal."
       />
-      <div className="container mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-        <div className="grid gap-10 lg:grid-cols-5">
+      <div className="container mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+        <div className="grid gap-10 lg:grid-cols-5 lg:gap-14">
           <aside className="text-muted-foreground space-y-6 text-sm leading-relaxed lg:col-span-2">
-            <div>
+            <div className="rounded-2xl border border-border/50 bg-zinc-950/35 p-5">
               <h2 className="text-foreground font-heading text-sm font-semibold">
                 Direct
               </h2>
@@ -45,7 +45,7 @@ export default function ContactPage() {
                 {siteConfig.email}
               </a>
             </div>
-            <p>
+            <p className="max-w-sm">
               Prefer a call? After you submit, we can send a calendar link that
               matches your time zone.
             </p>
@@ -65,7 +65,7 @@ export default function ContactPage() {
               </Link>
             </p>
           </aside>
-          <div className="bg-card/30 border-border/50 rounded-2xl border p-6 sm:p-8 lg:col-span-3">
+          <div className="bg-card/30 border-border/50 rounded-3xl border p-6 shadow-[0_24px_80px_rgba(0,0,0,0.22)] sm:p-8 lg:col-span-3">
             <Suspense fallback={<FormFallback />}>
               <ContactForm />
             </Suspense>

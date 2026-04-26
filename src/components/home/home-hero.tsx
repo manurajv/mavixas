@@ -15,7 +15,7 @@ export function HomeHero() {
   return (
     <section className="relative min-h-[min(92vh,860px)] overflow-hidden">
       <HeroBackground />
-      <div className="container relative mx-auto flex max-w-6xl flex-col justify-center gap-10 px-4 pb-20 pt-24 sm:px-6 sm:pt-28 md:min-h-[80vh] md:pb-24">
+      <div className="container relative mx-auto flex max-w-6xl flex-col justify-center gap-10 px-4 pb-24 pt-24 sm:px-6 sm:pt-32 md:min-h-[82vh] md:pb-28">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -29,7 +29,7 @@ export function HomeHero() {
         </motion.div>
         <div className="max-w-3xl">
           <motion.h1
-            className="text-foreground font-heading text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl"
+            className="text-foreground font-heading text-5xl font-semibold leading-[1.02] tracking-[-0.04em] sm:text-6xl md:text-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.05, ease }}
@@ -40,7 +40,7 @@ export function HomeHero() {
             </span>
           </motion.h1>
           <motion.p
-            className="text-muted-foreground mt-5 max-w-xl text-balance text-base leading-relaxed sm:text-lg"
+            className="text-muted-foreground mt-6 max-w-2xl text-balance text-lg leading-relaxed sm:text-xl"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.12, ease }}
@@ -76,7 +76,7 @@ export function HomeHero() {
           </Link>
         </motion.div>
         <motion.dl
-          className="grid max-w-2xl grid-cols-3 gap-4 border-t border-white/6 pt-8 text-sm sm:gap-6"
+          className="grid max-w-3xl gap-3 border-t border-white/6 pt-8 text-sm sm:grid-cols-3 sm:gap-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.35, duration: 0.45 }}
@@ -86,7 +86,10 @@ export function HomeHero() {
             { k: "Time zones", v: "APAC · EU · US" },
             { k: "Stack", v: "Flutter · Web · AI" },
           ].map((row) => (
-            <div key={row.k}>
+            <div
+              key={row.k}
+              className="rounded-2xl border border-white/8 bg-white/[0.03] p-4 backdrop-blur"
+            >
               <dt className="text-muted-foreground text-xs uppercase tracking-wider">
                 {row.k}
               </dt>

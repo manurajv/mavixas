@@ -20,14 +20,14 @@ const ease: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 export function HomeServicesGrid() {
   return (
-    <section className="border-t border-border/50 py-20 sm:py-24" id="services">
+    <section className="border-t border-border/50 py-24 sm:py-28" id="services">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="What we do"
           title="Engineering, design, and delivery—end to end"
           description="From Flutter apps to production AI, we own outcomes with a senior team and transparent cadence."
         />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => {
             const Icon = s.icon
             return (
@@ -40,12 +40,12 @@ export function HomeServicesGrid() {
               >
                 <Card
                   className={cn(
-                    "group h-full border-border/50 bg-zinc-950/40 transition hover:border-border",
+                    "group h-full border-border/50 bg-zinc-950/45 transition hover:-translate-y-1 hover:border-border",
                     "hover:shadow-[0_0_0_1px_rgba(59,130,246,0.15),0_20px_50px_rgba(0,0,0,0.35)]"
                   )}
                 >
-                  <CardHeader>
-                    <div className="bg-brand/10 text-brand group-hover:bg-brand/15 mb-3 inline-flex size-10 items-center justify-center rounded-lg border border-white/5 transition">
+                  <CardHeader className="px-5">
+                    <div className="bg-brand/10 text-brand group-hover:bg-brand/15 mb-3 inline-flex size-11 items-center justify-center rounded-xl border border-white/5 transition">
                       <Icon className="size-5" />
                     </div>
                     <CardTitle className="text-lg">{s.title}</CardTitle>
@@ -53,7 +53,7 @@ export function HomeServicesGrid() {
                       {s.description}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="px-5">
                     <ul className="text-muted-foreground space-y-1.5 text-sm">
                       {s.highlights.map((h) => (
                         <li key={h} className="flex gap-2">

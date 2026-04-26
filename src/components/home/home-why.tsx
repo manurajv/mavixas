@@ -10,7 +10,7 @@ const ease: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 export function HomeWhy() {
   return (
-    <section className="border-t border-border/50 py-20 sm:py-24" id="why">
+    <section className="border-t border-border/50 py-24 sm:py-28" id="why">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Why Mavixas"
@@ -19,7 +19,7 @@ export function HomeWhy() {
           align="center"
           className="mx-auto max-w-2xl"
         />
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
           {whyMavixas.map((item, i) => (
             <motion.article
               key={item.title}
@@ -28,8 +28,8 @@ export function HomeWhy() {
               viewport={{ once: true, amount: 0.25 }}
               transition={{ delay: i * 0.08, duration: 0.45, ease }}
               className={cn(
-                "rounded-2xl border border-border/50 bg-zinc-950/45 p-6 sm:p-7",
-                "hover:border-border transition"
+                "rounded-3xl border border-border/50 bg-zinc-950/45 p-6 sm:p-7",
+                "hover:-translate-y-1 hover:border-border transition"
               )}
             >
               <h3 className="text-foreground font-heading text-lg font-semibold">

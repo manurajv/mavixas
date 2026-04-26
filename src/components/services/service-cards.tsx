@@ -33,10 +33,10 @@ export function ServiceCards() {
               transition={{ delay: (i % 4) * 0.04, duration: 0.45, ease }}
             >
               <Card
-                className="group h-full border-border/50 bg-zinc-950/40"
+                className="group h-full border-border/50 bg-zinc-950/45 transition hover:-translate-y-1 hover:border-border"
                 data-size="sm"
               >
-                <CardHeader>
+                <CardHeader className="px-5">
                   <div className="bg-brand/10 text-brand group-hover:bg-brand/15 mb-2 inline-flex size-11 items-center justify-center rounded-xl border border-white/5">
                     <Icon className="size-5" />
                   </div>
@@ -45,7 +45,7 @@ export function ServiceCards() {
                     {s.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="px-5">
                   <div className="flex flex-wrap gap-1.5">
                     {s.highlights.map((h) => (
                       <Badge

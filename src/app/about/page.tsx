@@ -49,12 +49,12 @@ export default function AboutPage() {
         title="A Sri Lankan team building for the world"
         description="We started Mavixas to give ambitious companies access to a focused product studio: senior talent, clear communication, and the engineering discipline to ship and scale—without the enterprise bloat."
       />
-      <div className="container mx-auto max-w-3xl space-y-12 px-4 py-16 sm:px-6 sm:py-20">
-        <section>
-          <h2 className="text-foreground font-heading text-2xl font-semibold">
+      <div className="container mx-auto max-w-4xl space-y-14 px-4 py-20 sm:px-6 sm:py-24">
+        <section className="rounded-3xl border border-border/50 bg-zinc-950/35 p-6 sm:p-8">
+          <h2 className="text-foreground font-heading text-2xl font-semibold tracking-tight">
             Our focus
           </h2>
-          <p className="text-muted-foreground mt-4 text-base leading-relaxed">
+          <p className="text-muted-foreground mt-4 max-w-3xl text-base leading-relaxed sm:text-lg">
             {siteConfig.name} partners with growth-stage companies and
             well-funded teams who need a reliable long-term engineering partner.
             We specialize in our core strengths:
@@ -69,7 +69,7 @@ export default function AboutPage() {
             return (
               <li
                 key={v.title}
-                className="bg-card/30 border-border/50 flex gap-3 rounded-2xl border p-4"
+                className="bg-card/30 border-border/50 flex gap-3 rounded-3xl border p-5 transition hover:-translate-y-1 hover:border-border"
               >
                 <div className="text-brand">
                   <I className="size-5" aria-hidden />

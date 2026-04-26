@@ -11,14 +11,14 @@ const ease: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 export function HomeFinalCta() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-24 sm:py-32">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.5, ease }}
-          className="bg-brand/8 relative overflow-hidden rounded-3xl border border-white/8 px-6 py-14 text-center sm:px-10"
+          className="bg-brand/8 relative overflow-hidden rounded-[2rem] border border-white/8 px-6 py-16 text-center shadow-[0_30px_100px_rgba(0,0,0,0.3)] sm:px-10 sm:py-20"
         >
           <div
             className="pointer-events-none absolute inset-0 opacity-50"
@@ -27,7 +27,7 @@ export function HomeFinalCta() {
                 "radial-gradient(ellipse 80% 60% at 50% 0%, oklch(0.5 0.2 255 / 20%), transparent)",
             }}
           />
-          <h2 className="text-foreground font-heading text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h2 className="text-foreground font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
             Ready to build what&apos;s next?
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-lg text-balance text-sm sm:text-base">

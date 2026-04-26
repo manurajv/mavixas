@@ -21,7 +21,7 @@ const accent: Record<Project["accent"], string> = {
 
 export function HomeFeaturedProjects() {
   return (
-    <section className="border-t border-border/50 py-20 sm:py-24" id="work">
+    <section className="border-t border-border/50 py-24 sm:py-28" id="work">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Work"
@@ -36,11 +36,11 @@ export function HomeFeaturedProjects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: i * 0.07, duration: 0.45, ease }}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-zinc-950/50 transition hover:border-border"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-zinc-950/50 transition hover:-translate-y-1 hover:border-border"
             >
               <div
                 className={cn(
-                  "h-32 bg-gradient-to-br",
+                "h-36 bg-gradient-to-br",
                   accent[p.accent],
                   "relative"
                 )}
@@ -50,7 +50,7 @@ export function HomeFeaturedProjects() {
                   {p.category}
                 </p>
               </div>
-              <div className="flex flex-1 flex-col p-5">
+              <div className="flex flex-1 flex-col p-6">
                 <h3 className="text-foreground font-heading text-lg font-semibold">
                   {p.title}
                 </h3>
