@@ -1,7 +1,14 @@
 import { z } from "zod"
 import { NextResponse } from "next/server"
 
-/** Ensure Node (full fetch + env); avoids odd Edge behavior with some upstream APIs. */
+import {
+  buildWeb3Payload,
+  parseWeb3Response,
+  readRequestJson,
+  WEB3FORMS_SUBMIT_URL,
+} from "@/lib/web3forms"
+import { siteConfig } from "@/lib/data"
+
 export const runtime = "nodejs"
 
 const bodySchema = z.object({
@@ -15,28 +22,14 @@ const bodySchema = z.object({
   intent: z.enum(["project", "book", "other"]).optional(),
 })
 
-type Web3FormsSuccess = { success: boolean; message?: string }
-
-function parseWeb3Response(text: string): Web3FormsSuccess | null {
-  const trimmed = text.trim()
-  if (!trimmed) return null
-  if (trimmed.startsWith("<") || trimmed.startsWith("<!")) {
-    return null
-  }
-  try {
-    return JSON.parse(trimmed) as Web3FormsSuccess
-  } catch {
-    return null
-  }
-}
-
 export async function POST(request: Request) {
   try {
-    let json: unknown
-    try {
-      json = await request.json()
-    } catch {
-      return NextResponse.json({ error: "Invalid JSON" }, { status: 400 })
+    const json = await readRequestJson(request)
+    if (json === null) {
+      return NextResponse.json(
+        { error: "Invalid or empty JSON body" },
+        { status: 400 }
+      )
     }
 
     const parsed = bodySchema.safeParse(json)
@@ -53,39 +46,28 @@ export async function POST(request: Request) {
 
     if (!key) {
       if (process.env.NODE_ENV === "development") {
-        console.log(
-          "[mavixas] contact (dev, no WEB3FORMS_ACCESS_KEY):",
-          name,
-          email,
-          intent
-        )
         return NextResponse.json({ ok: true, dev: true } as const)
       }
       return NextResponse.json(
         {
           error:
-            "Contact form is not configured. Set WEB3FORMS_ACCESS_KEY on the server.",
+            "Contact form is not configured. Set WEB3FORMS_ACCESS_KEY on the server, or use NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY for browser submit.",
         },
         { status: 503 }
       )
     }
 
-    const payload = {
-      access_key: key,
+    const payload = buildWeb3Payload({
+      accessKey: key,
       name,
       email,
-      subject: `Mavixas contact – ${name}${intent ? ` (${intent})` : ""}`,
-      message: [
-        `Intent: ${intent ?? "not specified"}`,
-        company ? `Company: ${company}` : null,
-        "",
-        message,
-      ]
-        .filter(Boolean)
-        .join("\n"),
-    }
+      company: company ?? "",
+      message,
+      intent: intent ?? "other",
+      brandName: siteConfig.name,
+    })
 
-    const res = await fetch("https://api.web3forms.com/submit", {
+    const res = await fetch(WEB3FORMS_SUBMIT_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -102,13 +84,12 @@ export async function POST(request: Request) {
       console.error(
         "[mavixas] web3forms non-JSON response",
         res.status,
-        res.headers.get("content-type"),
         raw.slice(0, 200)
       )
       return NextResponse.json(
         {
           error:
-            "The email service did not return a valid response (often: wrong access key, or a temporary block). Check WEB3FORMS_ACCESS_KEY in Vercel and your Web3Forms dashboard.",
+            "The email service did not return a valid response. Set NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY in Vercel to submit from the browser instead of the server.",
         },
         { status: 502 }
       )

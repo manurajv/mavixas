@@ -9,6 +9,12 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { siteConfig } from "@/lib/data"
+import {
+  buildWeb3Payload,
+  parseWeb3Response,
+  WEB3FORMS_SUBMIT_URL,
+} from "@/lib/web3forms"
 import { cn } from "@/lib/utils"
 
 type FormState = "idle" | "submitting" | "success" | "error"
@@ -45,39 +51,86 @@ export function ContactForm({ className }: { className?: string }) {
     e.preventDefault()
     setState("submitting")
     setError(null)
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, company, message, intent }),
-      })
-      const text = await res.text()
-      let data: { error?: string; ok?: boolean } = {}
-      try {
-        data = text ? (JSON.parse(text) as { error?: string; ok?: boolean }) : {}
-      } catch {
-        setError(
-          `The server response was not valid (${res.status}). If this persists, check Vercel function logs.`
-        )
-        setState("error")
-        return
-      }
-      if (!res.ok) {
-        setError(data.error || "Something went wrong")
-        setState("error")
-        return
-      }
+
+    const publicKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY?.trim()
+
+    const finishSuccess = () => {
       setState("success")
       setName("")
       setEmail("")
       setCompany("")
       setMessage("")
-    } catch (err) {
+    }
+
+    const parseApiJson = async (res: Response) => {
+      const text = await res.text()
+      try {
+        return (text
+          ? (JSON.parse(text) as { error?: string; ok?: boolean })
+          : {}) as { error?: string; ok?: boolean }
+      } catch {
+        return { error: `Invalid response (${res.status})` }
+      }
+    }
+
+    try {
+      if (publicKey) {
+        const payload = buildWeb3Payload({
+          accessKey: publicKey,
+          name,
+          email,
+          company,
+          message,
+          intent,
+          brandName: siteConfig.name,
+        })
+        const res = await fetch(WEB3FORMS_SUBMIT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        })
+        const text = await res.text()
+        const w3 = parseWeb3Response(text)
+        if (!w3) {
+          setError(
+            "The email service did not return a valid response. Check your key and Web3Forms settings."
+          )
+          setState("error")
+          return
+        }
+        if (!res.ok || !w3.success) {
+          setError(w3.message || "Failed to send. Please try again.")
+          setState("error")
+          return
+        }
+        finishSuccess()
+        return
+      }
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, company, message, intent }),
+      })
+      const data = await parseApiJson(res)
+      if (!res.ok) {
+        setError(
+          data.error ??
+            "Request failed. For production, set NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY in Vercel to the same value as your Web3Forms key."
+        )
+        setState("error")
+        return
+      }
+      finishSuccess()
+    } catch {
       const isOffline = typeof navigator !== "undefined" && !navigator.onLine
       setError(
         isOffline
           ? "You appear to be offline. Check your connection and try again."
-          : "Request failed (network or blocked). Try again, or disable ad blockers for this site."
+          : "Request failed. Check your connection or ad blockers, then try again."
       )
       setState("error")
     }
