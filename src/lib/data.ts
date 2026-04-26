@@ -154,49 +154,128 @@ export const proofPoints = [
 ] as const
 
 export type Project = {
+  slug: string
   title: string
   category: string
   description: string
   tags: string[]
   accent: "blue" | "violet" | "cyan" | "indigo"
+  headline: string
+  idealFor: string
+  timeline: string
+  stack: string[]
+  deliverables: string[]
+  approach: string[]
 }
 
 export const projects: Project[] = [
   {
+    slug: "payment-operations-platform",
     title: "Payment Operations Platform",
     category: "SaaS architecture",
     description:
       "A subscription-ready product blueprint covering merchant onboarding, billing flows, admin dashboards, and reporting.",
     tags: ["SaaS", "Payments", "Web"],
     accent: "blue",
+    headline:
+      "A secure operations layer for subscription businesses that need billing, dashboards, and clean admin workflows.",
+    idealFor: "Fintech, B2B SaaS, marketplace, and operations-heavy startups",
+    timeline: "6-10 week MVP blueprint",
+    stack: ["Next.js", "TypeScript", "PostgreSQL", "Stripe", "Role-based auth"],
+    deliverables: [
+      "Merchant onboarding and verification flows",
+      "Subscription and invoice management",
+      "Admin dashboards with searchable records",
+      "Reporting views for finance and operations",
+    ],
+    approach: [
+      "Start with the operational model: users, roles, billing rules, and compliance needs.",
+      "Design the data model and admin surfaces before building polished screens.",
+      "Ship an MVP path first, then expand reporting, automation, and integrations.",
+    ],
   },
   {
+    slug: "field-team-mobile-app",
     title: "Field Team Mobile App",
     category: "Flutter product",
     description:
       "An offline-capable Flutter app concept for field operations, task capture, location-aware workflows, and manager review.",
     tags: ["Flutter", "AI", "Edge"],
     accent: "violet",
+    headline:
+      "A cross-platform mobile app for teams working outside the office, built around reliability and fast field input.",
+    idealFor: "Logistics, inspections, sales teams, field service, and on-site operations",
+    timeline: "5-9 week MVP blueprint",
+    stack: ["Flutter", "Dart", "Firebase/Supabase", "Offline storage", "Maps"],
+    deliverables: [
+      "Task assignment and daily route views",
+      "Offline-first capture for notes, photos, and signatures",
+      "Manager review dashboard and status updates",
+      "Optional AI-assisted summaries from field notes",
+    ],
+    approach: [
+      "Map the real field workflow before designing screens.",
+      "Prioritize offline behavior, sync states, and simple input patterns.",
+      "Build a focused manager dashboard so field data becomes actionable quickly.",
+    ],
   },
   {
+    slug: "growth-analytics-workspace",
     title: "Growth Analytics Workspace",
     category: "Data platform",
     description:
       "A modern analytics workspace pattern with event ingestion, metric definitions, team dashboards, and executive views.",
     tags: ["Data", "Web", "APIs"],
     accent: "cyan",
+    headline:
+      "A clean analytics workspace that turns product events into shared metrics and decision-ready dashboards.",
+    idealFor: "SaaS, ecommerce, mobile apps, and product-led growth teams",
+    timeline: "4-8 week MVP blueprint",
+    stack: ["Next.js", "TypeScript", "Event APIs", "Warehouse-ready data", "Charts"],
+    deliverables: [
+      "Event taxonomy and tracking plan",
+      "Metric definitions for product and growth teams",
+      "Role-based dashboards and saved views",
+      "Export and API foundations for future integrations",
+    ],
+    approach: [
+      "Define the questions the business needs answered before touching charts.",
+      "Separate event collection, metric logic, and presentation for maintainability.",
+      "Create dashboards that support decisions, not vanity reporting.",
+    ],
   },
   {
+    slug: "secure-client-portal",
     title: "Secure Client Portal",
     category: "Custom software",
     description:
       "A secure portal pattern for role-based access, document exchange, audit trails, and guided client workflows.",
     tags: ["Compliance", "Web", "Security"],
     accent: "indigo",
+    headline:
+      "A secure web portal for teams that need structured client collaboration, document exchange, and reliable access control.",
+    idealFor: "Professional services, healthcare-adjacent workflows, finance, and operations teams",
+    timeline: "6-12 week MVP blueprint",
+    stack: ["Next.js", "TypeScript", "Secure auth", "Audit trails", "Cloud storage"],
+    deliverables: [
+      "Client and internal role-based dashboards",
+      "Secure document uploads and status workflows",
+      "Audit trail foundations for sensitive actions",
+      "Notification and handoff flows for operations teams",
+    ],
+    approach: [
+      "Model permissions and sensitive data boundaries first.",
+      "Design guided workflows so clients know exactly what to do next.",
+      "Build security, logging, and handoff documentation into the MVP.",
+    ],
   },
 ] as const
 
 export const featuredHomeProjects = projects.slice(0, 3)
+
+export function getProjectBySlug(slug: string) {
+  return projects.find((project) => project.slug === slug)
+}
 
 export const trustSignals = [
   {

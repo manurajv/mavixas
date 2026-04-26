@@ -27,10 +27,10 @@
   - Web app manifest
   - Metadata, robots, and sitemap polish
   - Search Console checklist
-- [ ] Phase 6: Optional enhancements
-  - Blog or insights
-  - Case study detail pages
-  - Dark/light preference toggle if needed
+- [x] Phase 6: Optional enhancements
+  - Representative build detail pages
+  - Portfolio card deep links
+  - Portfolio detail URLs in sitemap
 
 ## Notes
 

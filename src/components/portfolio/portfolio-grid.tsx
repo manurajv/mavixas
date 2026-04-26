@@ -23,46 +23,50 @@ export function PortfolioGrid() {
     <div>
       <div className="grid gap-5 md:grid-cols-2">
         {projects.map((p, i) => (
-          <motion.article
+          <motion.div
             key={p.title}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.12 }}
             transition={{ delay: (i % 3) * 0.05, duration: 0.45, ease }}
-            className="group flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-zinc-950/50 transition hover:-translate-y-1 hover:border-border"
           >
-            <div
-              className={cn(
-                "h-44 bg-gradient-to-br",
-                accent[p.accent],
-                "relative"
-              )}
+            <Link
+              href={`/portfolio/${p.slug}`}
+              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border/50 bg-zinc-950/50 transition hover:-translate-y-1 hover:border-border"
             >
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_20%_20%,rgba(255,255,255,0.08),transparent)]" />
-              <p className="text-muted-foreground group-hover:text-foreground/90 absolute right-3 bottom-3 text-xs font-medium">
-                {p.category}
-              </p>
-            </div>
-            <div className="flex flex-1 flex-col p-6">
-              <h2 className="text-foreground font-heading text-lg font-semibold">
-                {p.title}
-              </h2>
-              <p className="text-muted-foreground mt-2 flex-1 text-sm leading-relaxed">
-                {p.description}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {p.tags.map((t) => (
-                  <Badge
-                    key={t}
-                    variant="secondary"
-                    className="text-muted-foreground border border-white/5 bg-white/5 font-normal"
-                  >
-                    {t}
-                  </Badge>
-                ))}
+              <div
+                className={cn(
+                  "h-44 bg-gradient-to-br",
+                  accent[p.accent],
+                  "relative"
+                )}
+              >
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_20%_20%,rgba(255,255,255,0.08),transparent)]" />
+                <p className="text-muted-foreground group-hover:text-foreground/90 absolute right-3 bottom-3 text-xs font-medium">
+                  {p.category}
+                </p>
               </div>
-            </div>
-          </motion.article>
+              <div className="flex flex-1 flex-col p-6">
+                <h2 className="text-foreground font-heading text-lg font-semibold">
+                  {p.title}
+                </h2>
+                <p className="text-muted-foreground mt-2 flex-1 text-sm leading-relaxed">
+                  {p.description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {p.tags.map((t) => (
+                    <Badge
+                      key={t}
+                      variant="secondary"
+                      className="text-muted-foreground border border-white/5 bg-white/5 font-normal"
+                    >
+                      {t}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            </Link>
+          </motion.div>
         ))}
       </div>
       <p className="text-muted-foreground mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed">

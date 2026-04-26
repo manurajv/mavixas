@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next"
 
-import { siteConfig } from "@/lib/data"
+import { projects, siteConfig } from "@/lib/data"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = (process.env.NEXT_PUBLIC_SITE_URL ?? siteConfig.url).replace(
@@ -8,11 +8,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ""
   )
   const now = new Date()
-  const paths = ["/", "/services", "/portfolio", "/about", "/contact"] as const
+  const paths = [
+    "/",
+    "/services",
+    "/portfolio",
+    ...projects.map((project) => `/portfolio/${project.slug}`),
+    "/about",
+    "/contact",
+  ] as const
   return paths.map((path) => ({
     url: `${base}${path}`,
     lastModified: now,
     changeFrequency: path === "/" ? "weekly" : "monthly",
-    priority: path === "/" ? 1 : 0.8,
+    priority: path === "/" ? 1 : path.startsWith("/portfolio/") ? 0.7 : 0.8,
   }))
 }
