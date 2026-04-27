@@ -99,6 +99,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  icons: {
+    icon: [{ url: siteConfig.logoPath, type: "image/svg+xml" }],
+    apple: [
+      { url: "/apple-icon", sizes: "180x180", type: "image/png" },
+    ],
+  },
 }
 
 export const viewport: Viewport = {

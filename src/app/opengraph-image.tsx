@@ -1,16 +1,19 @@
 import { ImageResponse } from "next/og"
 
 import { siteConfig } from "@/lib/data"
+import { getLogoPngDataUrl } from "@/lib/logo-raster"
 
-export const runtime = "edge"
-export const alt = `${siteConfig.name} - ${siteConfig.tagline}`
+export const runtime = "nodejs"
+export const alt = `${siteConfig.name} — ${siteConfig.tagline}`
 export const size = {
   width: 1200,
   height: 630,
 }
 export const contentType = "image/png"
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage() {
+  const logoSrc = await getLogoPngDataUrl(72)
+
   return new ImageResponse(
     (
       <div
@@ -28,23 +31,20 @@ export default function OpenGraphImage() {
             'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          <div
-            style={{
-              width: 64,
-              height: 64,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: 18,
-              background: "#2563eb",
-              boxShadow: "0 0 50px rgba(59, 130, 246, 0.65)",
-              fontSize: 30,
-              fontWeight: 800,
-            }}
-          >
-            M
-          </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 22,
+          }}
+        >
+          <img
+            src={logoSrc}
+            width={64}
+            height={64}
+            alt=""
+            style={{ objectFit: "contain" }}
+          />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontSize: 30, fontWeight: 800 }}>
               {siteConfig.name}
