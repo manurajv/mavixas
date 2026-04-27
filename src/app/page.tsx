@@ -1,4 +1,7 @@
 import { HomeFeaturedProjects } from "@/components/home/home-featured-projects"
+import { HomeEngagements } from "@/components/home/home-engagements"
+import { HomeFaq } from "@/components/home/home-faq"
+import { HomeFit } from "@/components/home/home-fit"
 import { HomeFinalCta } from "@/components/home/home-final-cta"
 import { HomeHero } from "@/components/home/home-hero"
 import { HomeProcess } from "@/components/home/home-process"
@@ -26,8 +29,11 @@ export default function HomePage() {
       <HomeServicesGrid />
       <HomeWhy />
       <HomeProcess />
+      <HomeEngagements />
+      <HomeFit />
       <HomeFeaturedProjects />
       <HomeTestimonials />
+      <HomeFaq />
       <HomeFinalCta />
     </>
   )

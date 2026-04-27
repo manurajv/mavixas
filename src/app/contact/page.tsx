@@ -4,7 +4,7 @@ import type { Metadata } from "next"
 
 import { ContactForm } from "@/components/forms/contact-form"
 import { PageHero } from "@/components/layout/page-hero"
-import { siteConfig } from "@/lib/data"
+import { faqs, siteConfig } from "@/lib/data"
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -64,6 +64,21 @@ export default function ContactPage() {
                 View portfolio
               </Link>
             </p>
+            <div className="rounded-2xl border border-border/50 bg-zinc-950/35 p-5">
+              <h2 className="text-foreground font-heading text-sm font-semibold">
+                Before you send
+              </h2>
+              <ul className="text-muted-foreground mt-3 space-y-2 text-sm">
+                {faqs.slice(0, 3).map((faq) => (
+                  <li key={faq.question} className="flex gap-2">
+                    <span className="text-brand" aria-hidden>
+                      ·
+                    </span>
+                    {faq.question}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </aside>
           <div className="bg-card/30 border-border/50 rounded-3xl border p-6 shadow-[0_24px_80px_rgba(0,0,0,0.22)] sm:p-8 lg:col-span-3">
             <Suspense fallback={<FormFallback />}>

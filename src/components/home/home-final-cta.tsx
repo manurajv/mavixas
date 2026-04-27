@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
 import { buttonVariants } from "@/components/ui/button"
+import { bookingHref } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1]
@@ -46,7 +47,7 @@ export function HomeFinalCta() {
               <ArrowRight className="size-4" />
             </Link>
             <Link
-              href="/contact?intent=book"
+              href={bookingHref}
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
                 "h-11 justify-center rounded-full border-white/12 bg-zinc-950/40 px-6 backdrop-blur"

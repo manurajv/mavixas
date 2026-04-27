@@ -17,6 +17,11 @@ export const siteConfig = {
   email: "hello@mavixas.com",
   location: "Kirindiwela, Sri Lanka",
   /**
+   * Optional booking URL. Add Calendly/Cal.com/Google Appointment link here.
+   * Leave as `null` to route "Book call" buttons to `/contact?intent=book`.
+   */
+  bookingUrl: "https://calendly.com/mavixas-ceo/30min",
+  /**
    * File in `public/`, e.g. "/logo.svg". `null` = letter mark + name in the UI.
    * **Icon + word** → set `logoIconOnly: true`. **Full horizontal** logo in one file → `false`.
    */
@@ -27,6 +32,8 @@ export const siteConfig = {
     //{ label: "X", href: "https://x.com" },
   ],
 } as const
+
+export const bookingHref = siteConfig.bookingUrl ?? "/contact?intent=book"
 
 export const founder = {
   name: "Manuraj Vimukthi Alahakoon",
@@ -307,3 +314,78 @@ export const trustSignals = [
     body: "We think beyond screens: performance, SEO, form delivery, deployment, analytics, and long-term maintainability.",
   },
 ] as const
+
+export const faqs = [
+  {
+    question: "What types of projects does Mavixas take on?",
+    answer:
+      "We focus on Flutter mobile apps, modern web platforms, SaaS products, AI-enabled workflows, and custom software for businesses that need reliable product delivery.",
+  },
+  {
+    question: "Can you work with clients outside Sri Lanka?",
+    answer:
+      "Yes. Mavixas is based in Sri Lanka and built for global collaboration with async updates, clear demos, and timezone-aware planning.",
+  },
+  {
+    question: "How long does an MVP usually take?",
+    answer:
+      "Most focused MVPs can be scoped around 4-10 weeks depending on product complexity, integrations, design requirements, and review speed.",
+  },
+  {
+    question: "Do you only build new products?",
+    answer:
+      "No. We can also improve existing apps, modernize older systems, add AI features, build dashboards, or create internal tools around your current operations.",
+  },
+  {
+    question: "Do you provide support after launch?",
+    answer:
+      "Yes. We can plan launch support, bug fixes, performance improvements, new features, documentation, and handoff depending on what your team needs.",
+  },
+  {
+    question: "How do we start?",
+    answer:
+      "Send a short message through the contact form with your goals, timeline, and current stage. We will reply with the best next step, usually a short discovery call or a focused scope outline.",
+  },
+] as const
+
+export const engagementModels = [
+  {
+    title: "Discovery sprint",
+    range: "Best first step",
+    description:
+      "Clarify product direction, user flows, scope, risks, and a realistic build plan before committing to full development.",
+    bestFor: "Idea validation, product rescue, technical planning",
+    outcomes: ["Scope map", "Architecture direction", "Delivery roadmap"],
+  },
+  {
+    title: "MVP build",
+    range: "4-10 weeks typical",
+    description:
+      "Design and build a focused version of the product with enough polish, reliability, and structure to launch or validate.",
+    bestFor: "Founders, startups, internal product teams",
+    outcomes: ["Working product", "Deployment", "Launch support"],
+  },
+  {
+    title: "Growth retainer",
+    range: "Monthly support",
+    description:
+      "Ongoing development for new features, performance improvements, AI enhancements, maintenance, and product iteration.",
+    bestFor: "Teams that need consistent engineering capacity",
+    outcomes: ["Roadmap execution", "Monitoring", "Continuous improvement"],
+  },
+] as const
+
+export const fitSignals = {
+  goodFit: [
+    "You need a polished Flutter app, web platform, SaaS product, AI workflow, or custom software system.",
+    "You value clear communication, weekly progress, and practical technical decisions.",
+    "You want a partner who can help shape scope, not just receive task lists.",
+  ],
+  notBestFit: [
+    "You only need the cheapest possible implementation with no product input.",
+    "You need a large enterprise vendor with a big account-management layer.",
+    "You are not ready to define goals, decision makers, timeline, or launch expectations.",
+  ],
+  pricingNote:
+    "Projects are scoped after discovery because effort depends on product complexity, integrations, design depth, and launch requirements. We can start with a focused discovery sprint if you want clarity before a full build.",
+} as const

@@ -54,4 +54,13 @@
 - [x] Founder-led delivery section on About page
   - Added founder name, role, location, bio, and education.
   - Supports optional founder image via `founder.imagePath` in `src/lib/data.ts`.
-- [ ] Replace initials avatar with a professional founder photo when available.
+- [x] Replace initials avatar with a professional founder photo when available.
+- [x] FAQ section for conversion support
+  - Added Home FAQ section.
+  - Added short FAQ prompt on Contact page.
+- [x] Engagement model section
+  - Added Discovery sprint, MVP build, and Growth retainer paths.
+  - Added central `bookingHref` / `bookingUrl` config for future calendar link.
+- [x] Fit and pricing expectations section
+  - Added "Good fit" and "Probably not a fit" signals.
+  - Added pricing/scoping expectation note.

@@ -14,7 +14,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { navLinks } from "@/lib/data"
+import { bookingHref, navLinks } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
 function isActivePath(pathname: string, href: string) {
@@ -76,7 +76,7 @@ export function SiteHeader() {
             Start project
           </Link>
           <Link
-            href="/contact?intent=book"
+            href={bookingHref}
             className={cn(
               buttonVariants({ size: "sm" }),
               "hidden h-8 min-w-[5.5rem] rounded-full px-3.5 min-[900px]:inline-flex"
@@ -120,7 +120,7 @@ export function SiteHeader() {
                   )
                 })}
                 <Link
-                  href="/contact?intent=book"
+                  href={bookingHref}
                   onClick={() => setOpen(false)}
                   className="bg-primary text-primary-foreground mt-3 inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-2.5 text-center text-sm font-semibold"
                 >
