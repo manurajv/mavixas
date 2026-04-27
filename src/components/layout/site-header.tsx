@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { ArrowRight, Menu } from "lucide-react"
 
 import { MavixasLogo } from "@/components/brand/mavixas-logo"
+import { BookingLink } from "@/components/navigation/booking-link"
 import { buttonVariants } from "@/components/ui/button"
 import {
   Sheet,
@@ -14,7 +15,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { bookingHref, navLinks } from "@/lib/data"
+import { navLinks } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
 function isActivePath(pathname: string, href: string) {
@@ -75,8 +76,7 @@ export function SiteHeader() {
           >
             Start project
           </Link>
-          <Link
-            href={bookingHref}
+          <BookingLink
             className={cn(
               buttonVariants({ size: "sm" }),
               "hidden h-8 min-w-[5.5rem] rounded-full px-3.5 min-[900px]:inline-flex"
@@ -84,7 +84,7 @@ export function SiteHeader() {
           >
             Book call
             <ArrowRight className="size-3.5 transition-transform group-hover/button:translate-x-0.5" />
-          </Link>
+          </BookingLink>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               className={cn(
@@ -119,14 +119,13 @@ export function SiteHeader() {
                     </Link>
                   )
                 })}
-                <Link
-                  href={bookingHref}
+                <BookingLink
                   onClick={() => setOpen(false)}
                   className="bg-primary text-primary-foreground mt-3 inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-2.5 text-center text-sm font-semibold"
                 >
                   Book a call
                   <ArrowRight className="size-3.5" />
-                </Link>
+                </BookingLink>
               </div>
             </SheetContent>
           </Sheet>

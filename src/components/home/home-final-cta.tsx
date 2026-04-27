@@ -4,8 +4,8 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
+import { BookingLink } from "@/components/navigation/booking-link"
 import { buttonVariants } from "@/components/ui/button"
-import { bookingHref } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1]
@@ -46,15 +46,14 @@ export function HomeFinalCta() {
               Start your project
               <ArrowRight className="size-4" />
             </Link>
-            <Link
-              href={bookingHref}
+            <BookingLink
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
                 "h-11 justify-center rounded-full border-white/12 bg-zinc-950/40 px-6 backdrop-blur"
               )}
             >
               Book a call
-            </Link>
+            </BookingLink>
           </div>
         </motion.div>
       </div>

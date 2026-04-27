@@ -4,6 +4,7 @@ import { Target, Users, Globe2, Zap } from "lucide-react"
 import type { Metadata } from "next"
 
 import { PageHero } from "@/components/layout/page-hero"
+import { BookingLink } from "@/components/navigation/booking-link"
 import { buttonVariants } from "@/components/ui/button"
 import { founder, siteConfig } from "@/lib/data"
 import { cn } from "@/lib/utils"
@@ -146,15 +147,14 @@ export default function AboutPage() {
           })}
         </ul>
         <div className="text-center">
-          <Link
-            href="/contact?intent=book"
+          <BookingLink
             className={cn(
               buttonVariants({ size: "lg" }),
               "inline-flex rounded-full"
             )}
           >
             Talk to the team
-          </Link>
+          </BookingLink>
         </div>
       </div>
     </>

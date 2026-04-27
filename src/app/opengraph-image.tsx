@@ -100,7 +100,7 @@ export default function OpenGraphImage() {
           }}
         >
           <span>Flutter · Web · SaaS · AI</span>
-          <span>{siteConfig.url.replace("https://", "")}</span>
+          <span>{new URL(siteConfig.url).host}</span>
         </div>
       </div>
     ),

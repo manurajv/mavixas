@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ArrowRight, Sparkles } from "lucide-react"
 
 import { HeroBackground } from "@/components/home/hero-background"
+import { BookingLink } from "@/components/navigation/booking-link"
 import { siteConfig } from "@/lib/data"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -65,15 +66,14 @@ export function HomeHero() {
             Start project
             <ArrowRight className="size-4" />
           </Link>
-          <Link
-            href="/contact?intent=book"
+          <BookingLink
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
               "h-11 w-full min-w-[10rem] justify-center rounded-full border-white/10 bg-zinc-950/30 px-6 backdrop-blur sm:w-auto"
             )}
           >
             Book call
-          </Link>
+          </BookingLink>
         </motion.div>
         <motion.dl
           className="grid max-w-3xl gap-3 border-t border-white/6 pt-8 text-sm sm:grid-cols-3 sm:gap-4"

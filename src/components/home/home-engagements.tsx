@@ -5,8 +5,9 @@ import Link from "next/link"
 import { ArrowRight, Check } from "lucide-react"
 
 import { SectionHeader } from "@/components/home/section-header"
+import { BookingLink } from "@/components/navigation/booking-link"
 import { buttonVariants } from "@/components/ui/button"
-import { bookingHref, engagementModels } from "@/lib/data"
+import { engagementModels } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1]
@@ -69,15 +70,14 @@ export function HomeEngagements() {
             Start with a scope
             <ArrowRight className="size-4" />
           </Link>
-          <Link
-            href={bookingHref}
+          <BookingLink
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
               "h-11 rounded-full border-white/12 bg-zinc-950/40 px-6"
             )}
           >
             Book a call
-          </Link>
+          </BookingLink>
         </div>
       </div>
     </section>

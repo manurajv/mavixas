@@ -1,10 +1,13 @@
 import { Suspense } from "react"
 import Link from "next/link"
+import { CalendarClock } from "lucide-react"
 import type { Metadata } from "next"
 
 import { ContactForm } from "@/components/forms/contact-form"
 import { PageHero } from "@/components/layout/page-hero"
-import { faqs, siteConfig } from "@/lib/data"
+import { bookingHref, faqs, isExternalBookingHref, siteConfig } from "@/lib/data"
+import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -45,10 +48,34 @@ export default function ContactPage() {
                 {siteConfig.email}
               </a>
             </div>
-            <p className="max-w-sm">
-              Prefer a call? After you submit, we can send a calendar link that
-              matches your time zone.
-            </p>
+            {isExternalBookingHref(bookingHref) ? (
+              <div className="rounded-2xl border border-border/50 bg-zinc-950/35 p-5">
+                <h2 className="text-foreground font-heading text-sm font-semibold">
+                  Schedule a call
+                </h2>
+                <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+                  Pick a 30-minute slot in your time zone—no back-and-forth
+                  required.
+                </p>
+                <a
+                  href={bookingHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    buttonVariants({ variant: "secondary", size: "sm" }),
+                    "text-foreground border-white/8 mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full"
+                  )}
+                >
+                  <CalendarClock className="size-4" aria-hidden />
+                  Open Calendly
+                </a>
+              </div>
+            ) : (
+              <p className="max-w-sm">
+                Prefer a call? After you submit, we can send a calendar link
+                that matches your time zone.
+              </p>
+            )}
             <p>
               <Link
                 href="/services"

@@ -13,7 +13,8 @@ export const siteConfig = {
   tagline: "Build Beyond Limits",
   description:
     "Mavixas is a Sri Lanka-based software studio building mobile apps, web platforms, SaaS, and AI solutions for ambitious businesses worldwide.",
-  url: "https://mavixas.com",
+  /** Public site URL; use the hostname your visitors see (e.g. www) for OG + sitemap. */
+  url: "https://www.mavixas.com",
   email: "hello@mavixas.com",
   location: "Kirindiwela, Sri Lanka",
   /**
@@ -34,6 +35,11 @@ export const siteConfig = {
 } as const
 
 export const bookingHref = siteConfig.bookingUrl ?? "/contact?intent=book"
+
+/** Resolves to Calendly (or any https URL) in `bookingHref`, or the contact form when `bookingUrl` is null. */
+export function isExternalBookingHref(href: string) {
+  return href.startsWith("http://") || href.startsWith("https://")
+}
 
 export const founder = {
   name: "Manuraj Vimukthi Alahakoon",

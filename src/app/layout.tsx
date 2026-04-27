@@ -27,8 +27,10 @@ const mono = JetBrains_Mono({
 })
 
 const base = new URL(
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://mavixas.com"
+  (process.env.NEXT_PUBLIC_SITE_URL ?? siteConfig.url).replace(/\/$/, "")
 )
+/** Canonical public origin, no trailing slash (matches sitemap, OG, and JSON-LD). */
+const siteUrl = base.href.replace(/\/$/, "")
 
 export const metadata: Metadata = {
   metadataBase: base,
@@ -49,7 +51,7 @@ export const metadata: Metadata = {
     "web development",
     "mobile apps",
   ],
-  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  authors: [{ name: siteConfig.name, url: siteUrl }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
   category: "technology",
@@ -66,13 +68,14 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
-    url: siteConfig.url,
+    url: siteUrl,
     images: [
       {
-        url: "/opengraph-image",
+        url: new URL("/opengraph-image", base).toString(),
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} - ${siteConfig.tagline}`,
+        type: "image/png",
+        alt: `${siteConfig.name} — ${siteConfig.tagline}`,
       },
     ],
   },
@@ -80,7 +83,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
-    images: ["/twitter-image"],
+    images: [new URL("/twitter-image", base).toString()],
   },
   robots: {
     index: true,
@@ -94,11 +97,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: siteConfig.url,
-  },
-  icons: {
-    icon: "/logo.svg",
-    apple: "/logo.svg",
+    canonical: siteUrl,
   },
 }
 
@@ -113,7 +112,7 @@ const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: siteConfig.name,
-  url: siteConfig.url,
+  url: siteUrl,
   description: siteConfig.description,
   address: {
     "@type": "PostalAddress",

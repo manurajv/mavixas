@@ -64,3 +64,7 @@
 - [x] Fit and pricing expectations section
   - Added "Good fit" and "Probably not a fit" signals.
   - Added pricing/scoping expectation note.
+- [x] Calendly / booking link wiring
+  - `BookingLink` for external HTTPS booking URLs (new tab, `rel="noopener noreferrer"`).
+  - Hero, header, final CTA, engagements, and About "Talk to the team" use the shared `bookingHref`.
+  - Contact page shows a "Schedule a call" card when a calendar URL is configured.
